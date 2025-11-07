@@ -1,1 +1,19 @@
+{
+  "business": {
+    "months_in_business": 28,
+    "industry": "Retail",
+    "country": "US"
+  },
+  "financials": {
+    "monthly_revenue": 22000,
+    "monthly_expenses": 15500,
+    "bank_balance": 32000,
+    "prior_defaults": 0
+  },
+  "alt_data": {
+    "ecom_rating": 4.6,
+    "avg_delivery_days": 2.1,
+    "support_sla_score": 0.92
+  }
+}
 
