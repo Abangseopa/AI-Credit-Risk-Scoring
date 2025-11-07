@@ -1,4 +1,4 @@
-# AI Credit Risk Scoring (Plaid + Alternative Data)
+# AI Agents for Credit Risk Scoring (Plaid + Alternative Data)
 
 Score SME/consumer credit risk from connected bank data (Plaid) plus alternative signals (e-commerce quality, ops metrics). 
 Simple Python backend with two files: `main.py` (scoring logic) and `api.py` (FastAPI API). UI can be any frontend (e.g., Lovable).
