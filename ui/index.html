@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Credit Risk Scoring – Demo</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>AI Credit Risk Scoring (Demo)</h1>
+    <p class="muted">Enter basic business info and run the scoring engine. In this demo the backend reads <code>demo_payload.json</code> if Plaid is not connected.</p>
+
+    <section class="card">
+      <form id="infoForm">
+        <div class="grid">
+          <label>Company Name
+            <input name="company" placeholder="Acme Coffee Roasters" required />
+          </label>
+          <label>Industry
+            <select name="industry" required>
+              <option value="">Select industry</option>
+              <option>Retail</option>
+              <option>Technology</option>
+              <option>Hospitality</option>
+              <option>Manufacturing</option>
+              <option>Services</option>
+            </select>
+          </label>
+          <label>Loan Amount
+            <input name="loan_amount" type="number" min="1000" step="500" placeholder="50000" required />
+          </label>
+          <label>Years in Business
+            <select name="years_active" required>
+              <option value="">Select</option>
+              <option>0-1</option>
+              <option>2-5</option>
+              <option>6-10</option>
+              <option>10+</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit" class="primary">Run Analysis</button>
+      </form>
+    </section>
+
+    <section id="loading" class="card hidden">
+      <div class="spinner"></div>
+      <div>
+        <h3>Running AI analysis…</h3>
+        <p class="muted">Evaluating financial health and risk factors</p>
+      </div>
+    </section>
+
+    <section id="result" class="card hidden">
+      <h2>Overall Risk Score: <span id="score">—</span>/100</h2>
+      <p id="rationale" class="muted"></p>
+
+      <h3>Risk Factor Breakdown</h3>
+      <div id="factors" class="factors"></div>
+      <button id="runAgain" class="ghost">New Analysis</button>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
