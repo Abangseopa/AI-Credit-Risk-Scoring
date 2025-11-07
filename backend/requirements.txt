@@ -1,1 +1,7 @@
+fastapi==0.114.1
+uvicorn==0.30.6
+pydantic==2.9.2
+python-dotenv==1.0.1
+PyYAML==6.0.2
+plaid-python==15.0.0
 
