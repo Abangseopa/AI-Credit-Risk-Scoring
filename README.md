@@ -1,26 +1,25 @@
-# AI Credit Risk Scoring (Delivered via WhatsApp & API)
+# AI Credit Risk Scoring (Plaid + Alternative Data)
 
-Small service that scores SME/consumer credit risk using rules + ML features. 
-Supports: conversational intake (WhatsApp) and a simple HTTP API.
+Score SME/consumer credit risk from connected bank data (Plaid) plus alternative signals (e-commerce quality, ops metrics). 
+Simple Python backend with two files: `main.py` (scoring logic) and `api.py` (FastAPI API). UI can be any frontend (e.g., Lovable).
 
-**Demo:** <PUT_DEMO_URL_HERE>  
-**Repo site:** add your demo URL in the repo “About” too.
+**Demo:** <ADD_DEMO_URL> • **API Base:** <ADD_API_URL>
 
 ## Live Flow
-User provides business/customer info → service enriches features → model scores PD / risk band → returns decision + reasons.
-
-## Architecture
-| Folder | Purpose |
-|---|---|
-| /backend | Scoring API (Edge Function / serverless) + feature transforms |
-| /ui | WhatsApp webhook or tiny web form for intake |
-| /screenshots | Flow images for README |
+1) Borrower connects bank via Plaid Link →  
+2) Backend exchanges token and (optionally) pulls key features →  
+3) Alternative data merged →  
+4) Model returns `pd`, risk band, max limit, and reasons.
 
 ## Endpoints
-- `POST /score` → returns `{pd, band, reasons, limits}`
+- `GET /health` → `{ ok: true }`  
+- `POST /score` → body like `backend/demo_payload.json` → returns `{ pd, band, max_limit, reasons, features }`  
+- `POST /bank/connect/exchange` → `{ public_token }` → `{ access_token }` (optional helper for Plaid)
 
-## Env
-Copy `/backend/.env.example` to `.env` and fill values.
-
-## Why it matters
-Fast, explainable underwriting for thin-file or underserved companies.
+## Run locally
+```bash
+cd backend
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env   # fill PLAID_*
+uvicorn api:app --reload --port 8000
