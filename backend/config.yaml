@@ -1,1 +1,16 @@
+scoring:
+  bands: ["A","B","C","D"]
+  margin_good_threshold: 5000       # USD
+  min_months_in_business: 24
+  min_bank_balance_good: 20000      # USD
+  base_pd: 0.25
+  default_penalty: 0.15
+  high_balance_bonus: -0.05
+  good_margin_bonus: -0.05
+  long_history_bonus: -0.05
+limits:
+  A: 50000
+  B: 30000
+  C: 15000
+  D: 5000
 
